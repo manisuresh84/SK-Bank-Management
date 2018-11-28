@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,6 +63,7 @@ public class BankRestController {
 		return theUser;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/users")
 	//@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public User addUser(@RequestBody User user) {
@@ -72,6 +74,7 @@ public class BankRestController {
 		return user;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/transactions/{accno}")
 	public TransactionDetail addTransaction(@RequestBody TransactionDetail transDetail, @PathVariable Long accno,
 			BindingResult bindingResult) {
@@ -128,6 +131,7 @@ public class BankRestController {
 		return bankService.getCustomTransactionDetails(theUser);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/performtransaction/{accno}")
 	public Double initiateTransaction(@RequestBody TransactionDetail transDetail, @PathVariable Long accno) {
 		
@@ -155,6 +159,4 @@ public class BankRestController {
 
 		return listTrans;
 	}
-
-
 }

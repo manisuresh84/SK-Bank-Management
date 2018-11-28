@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="transview">
+<head>
+<title>SK Bank Management</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="../js/transaction.js"></script>
+</head>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<body>
+	<div ng-controller="ViewTransaction">
+
+		<h2>
+			<center>Customer Transaction Details</center>
+		</h2>
+
+
+		<h4>Filter Results by Transaction ID</h4>
+
+		<div class="form-group col-sm-2">
+			<input type="text" class="form-control"
+				placeholder="filter by transaction id" ng-model="searchtext">
+		</div>
+		<br /> <br />
+		
+		<!-- <pre>{{ transdata | json }}</pre> -->
+
+		<div ng-class="ngtransdetail">
+			<table class="table table-bordered table-striped">
+				<tr class="danger">
+					<th>Account Number</th>
+					<th>Transaction Id</th>
+					<th>Transaction Type</th>
+					<th>Description</th>
+					<th>Balance</th>
+				</tr>
+				<!-- <tr ng-repeat="transaction in transdata | filter:searchText"> -->
+				<tr ng-repeat="transaction in transdata | filter:{transactionId:searchText}">
+					<!-- <td ng-bind="transaction.accountNumber"></td>
+					<td ng-bind="transaction.transactionId"></td>
+					<td ng-bind="transaction.transactionType"></td>
+					<td ng-bind="transaction.transactionDescription"></td>
+					<td ng-bind="transaction.transactionAmount"></td> -->
+
+					<td>{{transaction.accountNumber}}</td>
+					<td>{{transaction.transactionId}}</td>
+					<td>{{transaction.transactionType}}</td>
+					<td>{{transaction.transactionDescription}}</td>
+					<td>{{transaction.transactionAmount}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

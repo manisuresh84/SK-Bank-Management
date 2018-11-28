@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="userview">
+<head>
+<title>SK Bank Management</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="../js/viewuser.js"></script>
+</head>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<body>
+	<div ng-controller="ViewUser">
+
+		<h2>
+			<center>Bank Customer Details</center>
+		</h2>
+		
+		
+		<h4>Filter Results by Account Number</h4>
+
+		<div class="form-group col-sm-2">
+			<input type="text" class="form-control"
+				placeholder="filter by account number" ng-model="searchtext">
+		</div>
+		<br /> <br />
+		
+		
+		<table class="table table-bordered table-striped">
+			<tr class="danger">
+				<th>Account Number</th>
+				<th>Account Type</th>
+				<th>Account Holder Name</th>
+				<th>Account Balance</th>
+			</tr>
+			<tr ng-repeat="user in userdata">
+				<td ng-bind="user.accountNumber"></td>
+				<td ng-bind="user.accountType"></td>
+				<td ng-bind="user.accountHolderName"></td>
+				<td ng-bind="user.accountBalance"></td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+</html>

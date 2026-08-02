@@ -1,0 +1,4 @@
+{
+  "image": "docker.io/library/maven:3.9-eclipse-temurin-17",
+  "command": "mvn -B -ntp -e clean verify"
+}
